@@ -1,0 +1,132 @@
+/* Custom Font Faces for Geist */
+@font-face {
+    font-family: 'Geist';
+    src: url('https://cdn.jsdelivr.net/gh/vercel/geist-font@main/packages/next/dist/fonts/geist-sans/Geist-Bold.woff2') format('woff2');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Geist';
+    src: url('https://cdn.jsdelivr.net/gh/vercel/geist-font@main/packages/next/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+}
+
+body {
+    background-color: #081425;
+    color: #d8e3fb;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #081425;
+}
+::-webkit-scrollbar-thumb {
+    background: #1f2a3c;
+    border-radius: 10px;
+    border: 1px solid #081425;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7bd0ff;
+}
+
+/* Glassmorphism Card styling */
+.glass-card {
+    backdrop-filter: blur(16px);
+    background: rgba(15, 23, 42, 0.65);
+    border: 1px solid rgba(123, 208, 255, 0.1);
+}
+
+/* WebGL Background Canvas */
+#gl-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Animations & Entrance transitions */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-stagger {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Nav Link Hover Underline Indicator */
+.nav-link {
+    position: relative;
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #7bd0ff;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover::after, .nav-link-active::after {
+    width: 100%;
+}
+
+/* Mobile Menu Animation */
+#mobile-menu {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s linear;
+}
+#mobile-menu.hidden-menu {
+    transform: translateY(-10px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Pulse Animation for buttons */
+@keyframes pulse-secondary {
+    0% { box-shadow: 0 0 0 0 rgba(123, 208, 255, 0.4); }
+    70% { box-shadow: 0 0 0 12px rgba(123, 208, 255, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(123, 208, 255, 0); }
+}
+.btn-pulse:hover {
+    animation: pulse-secondary 1.8s infinite;
+}
+
+/* Project Card Hover Lifting & Shadow Glow */
+.project-card {
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(123, 208, 255, 0.4);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), 0 0 20px -5px rgba(123, 208, 255, 0.15);
+}
+
+.project-image-container img {
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.project-card:hover .project-image-container img {
+    transform: scale(1.04);
+}
+
+html {
+    scroll-behavior: smooth;
+}
